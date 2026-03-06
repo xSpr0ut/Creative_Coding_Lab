@@ -9,7 +9,6 @@ CCLaboratories Biodiversity Atlas
     canvas.parent("p5-canvas-container");
 */
 
-
 let x = 0;
 let y = 0;
 let R;
@@ -37,12 +36,13 @@ let chargingColour = 0;
 // charging timer
 let chargingTimer = 450;
 
-// random comment
-
 function setup() {
-let canvas = createCanvas(800, 500);
-canvas.id("p5-canvas");
-canvas.parent("p5-canvas-container");
+  let canvas = createCanvas(800, 500);
+  canvas.id("p5-canvas");
+  canvas.parent("p5-canvas-container");
+  
+  speedX = 2.5;
+  x = 0;
   
   trailCircles = random(5, 11);
   circleSize = random(1, 10);
@@ -52,19 +52,159 @@ canvas.parent("p5-canvas-container");
   pollinatedTimer = random(450, 750);
   
   chargingPortX = width/2;
-  chargingPortY = height/2;
-  
+  chargingPortY = height-40;
   
 }
 
 function draw() {
+  
   background(173, 238, 255);
+  
+  // background sky
+  
+  let colourTop = color(232, 251, 255);
+  let colourBottom = color(146, 220, 247);
+  let colourStrokeW = height/25;
+  
+  for(let a=0; a<height+colourStrokeW; a+=colourStrokeW){
+    
+    let amt = map(a, 0, height, 0, 1);
+    let newColour = lerpColor(colourTop, colourBottom, amt);
+    
+    stroke(newColour);
+    strokeWeight(colourStrokeW);
+    line(0, a, width, a);
+    
+  }
+  
+    // background grass
+  
+  let lineDist = 1;
+  
+  for(let i=0; i<width; i += lineDist){
+    
+    
+    // distance of mouse to grass
+    let grassHeight = height*noise(i);
+    let d2 = dist(mouseX, mouseY, i, grassHeight);
+    let maxDistance = 400;
+    let dBee1 = dist(x, y, i, grassHeight);
+    let shrinkFactor = constrain(d2 / maxDistance, 0, 1);
+    // let grassHeight = height*noise(i)*shrinkFactor;
+    
+    // wave effect
+    let waveFactor = map(dBee1, 0, 75, 1, 0); 
+    waveFactor = constrain(waveFactor, 0, 1);
+    let waveOffset = sin(i * 0.4 + frameCount * 0.5) * 20 * waveFactor;
+      
+    stroke(57, 107, 66);
+    strokeWeight(5*noise(i));
+    line(i, height, i + waveOffset, grassHeight*shrinkFactor); 
+    // line(i, height, i, grassHeight);
+    
+  }
+  
+      // background lighter grass
+  
+  let lineDist2 = 4;
+  
+  for(let i=0; i<width; i += lineDist2){
+    
+    let grassHeight = height*noise(i);
+    // distance of mouse to grass
+    let d = dist(mouseX, mouseY, i, grassHeight);
+    let dBee2 = dist(x, y, i, grassHeight);
+    let maxDistance = 400;
+    let shrinkFactor = constrain(d / maxDistance, 0, 1);
+    
+    
+    // wave movement code
+    let waveFactor = map(dBee2, 0, 150, 1, 0); 
+    waveFactor = constrain(waveFactor, 0, 1);
+    let waveOffset = sin(i * 0.4 + frameCount * 0.5) * 20 * waveFactor;
+      
+    stroke(113, 189, 127);
+    strokeWeight(4*noise(i));
+    line(i, height, i + waveOffset, grassHeight*shrinkFactor);
+    
+  }
+  
+  // small white flowers
+  let flowerAmt = 12;
+  
+  randomSeed(flowerAmt);
+  
+  for (let j=0; j<flowerAmt; j++){
+    
+    // let flowerY = height*noise(j*10);
+    let flowerY = noise(j * 50) * (height - height/2) + height/2;
+    //flowerY =  map(flowerY, 0, height, height/2, height);
+    // let flowerX = width*noise(j*10+1000);
+    let flowerX = random(width);
+    let flowerSize = 20;
+    // mouse distance calculating
+    let d = dist(mouseX, mouseY, flowerX, flowerY);
+    // let maxDistance = 100;
+    // let shrinkFactor = constrain(d / maxDistance, 0, 1);
+     let shrinkFactor = map(d, 0, 400, 1.5,0);
+    let flowerGrowth = map(d, 0, 400, 3, 1);
+    if(d>300){
+       shrinkFactor = 0;
+       }
+    
+    // flower y spawn ranges
+    let maxRaise = 50 + noise(j * 100) * 100;  // Between 50-150
+    let flowerHeight = flowerY - maxRaise * shrinkFactor;
+    
+    // let flowerHeight = flowerY-flowerY*shrinkFactor;
+    // let flowerYRange = map(flowerHeight, 0, height, height/2, height);
+    
+    fill('white');
+    noStroke();
+    circle(flowerX, flowerHeight, flowerSize*(flowerGrowth));
+      
+    
+  }
+  
+
+
+  
+  
+  
+  // # charger core
+  
   push();
   rectMode(CENTER);
-  colorMode(HSB)
-  fill(chargingColour, 100, 100);
-  rect(chargingPortX, chargingPortY, 75, 75);
+  colorMode(HSB);
+  noStroke();
+
+  // bigger behind pentagon
+  let r1 = 45; 
+  beginShape();
+  fill('black');
+  for (let i = 0; i < 5; i++) {
+    let angle = (Math.PI * 2 / 5) * i - Math.PI / 2; 
+    let x = chargingPortX + Math.cos(angle) * r1;
+    let y = chargingPortY + Math.sin(angle) * r1;
+    vertex(x, y);
+  }
+  endShape(CLOSE);
+  
+  // Draw pentagon centered at chargingPortX, chargingPortY
+  // CHANGING COLOUR PENTAGON
+    fill(chargingColour, 100, 100);
+  let r2 = 40; 
+  beginShape();
+  for (let i = 0; i < 5; i++) {
+    let angle = (Math.PI * 2 / 5) * i - Math.PI / 2; 
+    let x = chargingPortX + Math.cos(angle) * r2;
+    let y = chargingPortY + Math.sin(angle) * r2;
+    vertex(x, y);
+  }
+  endShape(CLOSE);
+
   pop();
+  
   
    // Calculate distance from bee to flower (mouse)
   let d = dist(x, y, mouseX, mouseY);
@@ -111,7 +251,7 @@ function draw() {
       y += random(-4, 4);
     }
     
-    if(frameCount%150 == 0){
+    if(frameCount%100 == 0){
       pollinating = false;
       hasPollinated = true;
       beeHSBHue -= 60;
@@ -123,13 +263,17 @@ function draw() {
     
     if(hasPollinated == true) {
       // Gradually transition back to normal movements by lerping
-      R = map(sin(frameCount), -1, 1, 50, 100);
+      // R = map(sin(frameCount), -1, 1, 50, 100);
+      R = map(sin(frameCount), -1, 1, 50, 200);   
       let targetY = height/6 + R*sin(frameCount);
       y = lerp(y, targetY, 0.05);  
     } else {
       // Normal bobbing
-      R = map(sin(frameCount), -1, 1, 50, 100);
+      // R = map(sin(frameCount), -1, 1, 50, 100);
+      
+      R = map(sin(frameCount), -1, 1, 50, 200);
       y = height/6 + R*sin(frameCount);
+      // y = height/3 + R * sin(frameCount + noise(frameCount * 0.5) * 10);
     }
   
     // horizontal movement is always this
@@ -164,6 +308,9 @@ function draw() {
   
   
 }
+
+
+// outside of draw function now
 
 function drawCreature(x, y) {
 
@@ -303,25 +450,33 @@ function drawTrail(x, y) {
   
 }
 
-function drawFlower(){
   
+function drawFlower() {
+  let numPetals = 6;
+  let petalDist = 28;
+  let petalSize = 45;
+  
+  // used to make sure flower x and y never go
+  // outside of the sreen / disappear
+  let fx = constrain(mouseX, petalDist, width - petalDist);
+  let fy = constrain(mouseY, petalDist, height - petalDist);
+
   noStroke();
-  fill(255, 181, 196);
-  circle(mouseX, mouseY, 100);
-  fill(255, 231, 135);
-  circle(mouseX, mouseY, 25);
-  
-  if(mouseX > width){
-    mouseX = width-1;
-  } else if(mouseX < 0){
-    mouseX = 1;
+
+  // Draw petals in a loop
+  for (let i = 0; i < numPetals; i++) {
+    let angle = (Math.PI * 2 / numPetals) * i;
+    let px = fx + Math.cos(angle) * petalDist;
+    let py = fy + Math.sin(angle) * petalDist;
+    fill(255, 150, 180);
+    circle(px, py, petalSize);
   }
-  
-  if(mouseY > height){
-    mouseY = height-1;
-  } if(mouseY < 0){
-    mouseY = 1;
-  }
-  
-  
+
+  // Draw center on top
+  fill(255, 220, 80);
+  circle(fx, fy, 22);
+
 }
+
+
+
