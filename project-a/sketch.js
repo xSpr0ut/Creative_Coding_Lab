@@ -37,6 +37,7 @@ let chargingColour = 0;
 // charging timer
 let chargingTimer = 450;
 
+// random comment
 
 function setup() {
 let canvas = createCanvas(800, 500);
