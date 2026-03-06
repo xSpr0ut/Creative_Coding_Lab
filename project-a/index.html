@@ -1,0 +1,98 @@
+<!-- 
+Template for IMA's Creative Coding Lab 
+
+Project A: Generative Creatures
+CCLaboratories Biodiversity Atlas 
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>[ NAME OF YOUR CREATURE ]</title>
+
+    <!-- allow special characters, including Arabic, Chinese, Korean, Japanese, etc. -->
+    <meta charset="UTF-8">
+    <!-- link the style sheet -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- import p5.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+    <script>
+        // prevent scrolling when spacebar and arrow keys are pressed.
+        window.addEventListener("keydown", function (e) { if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) { e.preventDefault(); } }, false);
+    </script>
+</head>
+
+<body>
+    <!-- title -->
+    <div id="title-wrapper">
+        <h1 class="headline black">[ Techno-Bee ]</h1>
+    </div>
+
+    <!-- main content -->
+    <div id="main-wrapper">
+        <div id="p5-canvas-container">
+            <!-- This is where your p5 sketch will be appended and appear! -->
+        </div>
+        <div class="two-columns">
+            <div class="left">
+                <h3 class="red">Scientific Name:</h3>
+                <p>Techno-Apis</p>
+
+                <h3 class="red">Discovered by / at:</h3>
+                <p>A scientist who experimented on injured bees in 2032.</p>
+
+                <h3 class="green">Family:</h3>
+                <p>Bees, Apoidea</p>
+            </div>
+            <div class="right">
+                <h3 class="green">Habitat:</h3>
+                <p>Sunny, grassy, and flower-dense areas; warm climate; gardens & meadows, particularly near cities.</p>
+
+                <h3 class="green">Appearance:</h3>
+                <p>Appears like a regular bee but with a different coloured coating, an indicator of the bee’s energy level</p>
+
+                <h3 class="green">Key Characteristics:</h3>
+                <ul>
+                    <li>Flies.</li>
+                    <li>Naturally attracted to flowers to pollinate.</li>
+                    <li>Need to be charged regularly</li>
+                    <li>Leaves behind a trail of small fumes</li>
+                </ul>
+            </div>
+        </div>
+        <div class="one-column">
+            <p>
+                <span class="yellow">What we know so far about Techno-Bee?</span>
+                A subspecies of bee which run on technological advancements. 
+                Although not subjected to the life span of a regular bee, 
+                it requires regular upkeep (charging) and leaves behind a trail of small fumes.
+                Wanders around collecting pollen, but it will require charging after 
+                two rounds of pollination.
+                <br>
+                <span class="yellow">Guidelines for human interaction with this creature</span> 
+                Using your mouse, hold a flower near techno-bees. 
+                They will naturally gravitate towards you unless 
+                they have recently pollinated a flower or are low on battery. 
+                It will follow the flower endlessly until it has landed on the 
+                flower for long enough to pollinate it.
+
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer" class="black">
+        <p>A CCLab project made by Joella Lin in Spring 2026</p>
+    </div>
+
+    <!-- Home: Link back to the ATLAS page-->
+    <div id="home">
+        <a href="https://cclab.work/atlas">Back to the ATLAS</a>
+    </div>
+
+    <!-- Include your sketch.js file here -->
+    <script src="sketch.js" type="text/javascript"> </script>
+</body>
+
+</html>

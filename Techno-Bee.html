@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://127.0.0.1:5500/project-a/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>[ NAME OF YOUR CREATURE ]</title>
+
+    <!-- allow special characters, including Arabic, Chinese, Korean, Japanese, etc. -->
+    
+    <!-- link the style sheet -->
+    <link rel="stylesheet" type="text/css" href="./Techno-Bee_files/style.css">
+    <!-- import p5.js library -->
+    <script src="./Techno-Bee_files/p5.min.js.download"></script>
+    <script>
+        // prevent scrolling when spacebar and arrow keys are pressed.
+        window.addEventListener("keydown", function (e) { if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) { e.preventDefault(); } }, false);
+    </script>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1275.0" data-gr-ext-installed="">
+    <!-- title -->
+    <div id="title-wrapper">
+        <h1 class="headline black">[ Techno-Bee ]</h1>
+    </div>
+
+    <!-- main content -->
+    <div id="main-wrapper">
+        <div id="p5-canvas-container">
+            <!-- This is where your p5 sketch will be appended and appear! -->
+        <canvas id="p5-canvas" class="p5Canvas" width="1600" height="1000" style="width: 800px; height: 500px;"></canvas></div>
+        <div class="two-columns">
+            <div class="left">
+                <h3 class="red">Scientific Name:</h3>
+                <p>Techno-Apis</p>
+
+                <h3 class="red">Discovered by / at:</h3>
+                <p>A scientist who experimented on injured bees in 2032.</p>
+
+                <h3 class="green">Family:</h3>
+                <p>Bees, Apoidea</p>
+            </div>
+            <div class="right">
+                <h3 class="green">Habitat:</h3>
+                <p>Sunny, grassy, and flower-dense areas; warm climate; gardens &amp; meadows, particularly near cities.</p>
+
+                <h3 class="green">Appearance:</h3>
+                <p>Appears like a regular bee but with a different coloured coating, an indicator of the bee’s energy level</p>
+
+                <h3 class="green">Key Characteristics:</h3>
+                <ul>
+                    <li>Flies.</li>
+                    <li>Naturally attracted to flowers to pollinate.</li>
+                    <li>Need to be charged regularly</li>
+                    <li>Leaves behind a trail of small fumes</li>
+                </ul>
+            </div>
+        </div>
+        <div class="one-column">
+            <p>
+                <span class="yellow">What we know so far about Techno-Bee?</span>
+                A subspecies of bee which run on technological advancements. 
+                Although not subjected to the life span of a regular bee, 
+                it requires regular upkeep (charging) and leaves behind a trail of small fumes.
+                Wanders around collecting pollen, but it will require charging after 
+                two rounds of pollination.
+                <br>
+                <span class="yellow">Guidelines for human interaction with this creature</span> 
+                Using your mouse, hold a flower near techno-bees. 
+                They will naturally gravitate towards you unless 
+                they have recently pollinated a flower or are low on battery. 
+                It will follow the flower endlessly until it has landed on the 
+                flower for long enough to pollinate it.
+
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer" class="black">
+        <p>A CCLab project made by Joella Lin in Spring 2026</p>
+    </div>
+
+    <!-- Home: Link back to the ATLAS page-->
+    <div id="home">
+        <a href="https://cclab.work/atlas">Back to the ATLAS</a>
+    </div>
+
+    <!-- Include your sketch.js file here -->
+    <script src="./Techno-Bee_files/sketch.js.download" type="text/javascript"> </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+<main></main></body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
