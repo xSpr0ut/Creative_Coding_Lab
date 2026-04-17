@@ -77,7 +77,11 @@ class Obstacles{
     for (let i = 0; i < others.length; i++) {
 
   
-      if (others[i] === this) continue;
+      if (others[i] === this){
+        
+        continue;
+
+      }
 
       // distance between us and other ball
       let dx = this.x - others[i].x;
