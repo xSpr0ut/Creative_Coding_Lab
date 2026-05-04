@@ -35,7 +35,6 @@ canvas {
 /* format the title in the middle */
 .title-div {
   color: white;
-  font-size: 24;
 /* remove background-color if you want it transparent */
   position: absolute;
   width: 200px;

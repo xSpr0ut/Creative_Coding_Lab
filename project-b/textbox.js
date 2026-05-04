@@ -14,13 +14,13 @@ class textbox
         this.text3 = "Consider:\n\nFree from the shackles of responsibility,\nhow do you plan to spend your time?";
         this.text4 = "Reflect & Discuss:\n\nDo you usually spend your free time how you imagine you would?";
         this.text5 = "Act:\n\nHold hands with each other and look each other in the eye\nuntil the timer ends.";
-        this.text6 = "Discuss:\n\nHow have you humanized your relationships with your artifical companions?";
-        this.text7 = "Discuss:\n\nDo you prefer a human companion or an artifical one?";
+        this.text6 = "Discuss: How have you humanized your relationships with your artifical companions?";
+        this.text7 = "Discuss: Do you prefer a human companion or an artifical one?";
 
         this.level = level;
         this.frameCount = 0;
        // total frames is 5400 = 90 seconds. 3600 = 60s
-        this.totalFrames = 3600;
+        this.totalFrames = 30;
         this.visible = true;
 
     }
@@ -45,14 +45,6 @@ class textbox
 
         if (this.level == 5){
             return this.text5;
-        }
-
-        if (this.level == 6){
-            return this.text6;
-        }
-
-        if (this.level == 7){
-            return this.text7;
         }
 
     }

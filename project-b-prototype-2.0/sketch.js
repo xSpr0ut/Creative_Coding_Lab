@@ -1,6 +1,6 @@
 
 let o = [];
-let numO = 10;
+let numO = 150;
 let player1;
 let player2;
 
@@ -90,7 +90,7 @@ function setup() {
 
 
 function draw() {
-  background(100);
+  background(0);
 
   //console.log("level: " + level);
 
@@ -128,7 +128,7 @@ function draw() {
     // Draw all the tracked hand points
     // p1[i] = hand.keypoints[20];
     p1[i] = hand.keypoints[12];
-    text(i, p1[i].x, p1[i].y);
+    // text(i, p1[i].x, p1[i].y);
 
     if (p_p1[i] != undefined) {
       //this difference will only work for swiping on one direction with right hand
@@ -145,8 +145,8 @@ function draw() {
     } else if (dif[0] < -100) {
       player1.p1MoveLeft = true;
     }
-    textSize(30);
-    text(int(difY[0]), p1[0].x, p1[0].y);
+    // textSize(30);
+    // text(int(difY[0]), p1[0].x, p1[0].y);
     if (difY[0] > 100) {
       player1.p1MoveDown = true;
     } else if (difY[0] < -100) {
@@ -300,14 +300,14 @@ function checkPlayerCollision() {
     playersCollided = true;
     
 // updating levels here!! ------------
-    if (level < 6) {
+    if (level < 7) {
       level++;
-      numO = (level * 20);
-      for (let i = 0; i < numO; i++) {
-        o.push(new Obstacles());
-      }
+      // numO = (level * 20);
+      // for (let i = 0; i < numO; i++) {
+      //   o.push(new Obstacles());
+      // }
     } else {
-      level = 0;
+      level = 1;
     }
 
     textbox1 = new textbox(level);
